@@ -159,7 +159,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/cocktail-backend/dev/1576575125966-2019-12-17T09:32:05.966Z/cocktail-backend.zip"
+                "S3Key": "serverless/cocktail-backend/dev/1576608925453-2019-12-17T18:55:25.453Z/cocktail-backend.zip"
               },
               "FunctionName": "cocktail-backend-dev-cocktail",
               "Handler": "handler.cocktail",
@@ -185,14 +185,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CocktailLambdaVersionj82LglbYJqxZc4Qe3xOjGXchVUtaSavZDXuqHWGvg": {
+          "CocktailLambdaVersioniy59rhroLvMIlTgcnZ257JDBCO6cwP9OsXUgCjU5Sw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CocktailLambdaFunction"
               },
-              "CodeSha256": "wDfSmgkSoaBAYO25NbtvV3+eGh5mYF4XiotgLhZ67Ms="
+              "CodeSha256": "XBV2rEHkEUYSU/pUB8VKjkzKI6mbVLKBa9Jp6NpYqCQ="
             }
           },
           "ApiGatewayRestApi": {
@@ -993,7 +993,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1576575118494": {
+          "ApiGatewayDeployment1576608917329": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1066,7 +1066,7 @@
           "CocktailLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CocktailLambdaVersionj82LglbYJqxZc4Qe3xOjGXchVUtaSavZDXuqHWGvg"
+              "Ref": "CocktailLambdaVersioniy59rhroLvMIlTgcnZ257JDBCO6cwP9OsXUgCjU5Sw"
             }
           },
           "ServiceEndpoint": {
@@ -1395,7 +1395,7 @@
     "artifact": "/Users/katiepostle/techreturners/team_cocktail_project_backend/.serverless/cocktail-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/cocktail-backend/dev/1576575125966-2019-12-17T09:32:05.966Z",
+    "artifactDirectoryName": "serverless/cocktail-backend/dev/1576608925453-2019-12-17T18:55:25.453Z",
     "artifact": "cocktail-backend.zip"
   }
 }

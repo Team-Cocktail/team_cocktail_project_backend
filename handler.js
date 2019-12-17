@@ -41,8 +41,8 @@ app.get("/getcocktailbyname/:name", function(req, res) {
 
 const name = req.params.name;
 
-  connection.query("SELECT id, name FROM cocktail " +
-                   "WHERE name = ?",
+  connection.query("SELECT id, name, difficulty, glass, alcoholic, recipe FROM cocktail " +
+                   "WHERE LOWER(name) = ?",
                    [name],
                   function(err, data) {
     if (err) {
@@ -74,13 +74,13 @@ app.get("/getcocktaildrink/:drink1name/:drink2name/:drink3name", function(req, r
     let querypart4 = "";
 
   if (drink1name != "empty") {
-    querypart2 = "WHERE drink.name= ?"
+    querypart2 = "WHERE LOWER(drink.name)= ?"
   }
   if (drink2name != "empty") {
-    querypart3 = " OR drink.name= ?"
+    querypart3 = " OR LOWER(drink.name)= ?"
   }
   if (drink3name != "empty") {
-    querypart4 = " OR drink.name= ?"
+    querypart4 = " OR LOWER(drink.name)= ?"
   }
 
   // connection.query("SELECT DISTINCT cocktail.id, cocktail.name FROM cocktail " +
@@ -106,8 +106,6 @@ app.get("/getcocktaildrink/:drink1name/:drink2name/:drink3name", function(req, r
   });
 
 });
-
-
 
 app.post("/cocktail", function(req, res) {
   const name = req.body.name;

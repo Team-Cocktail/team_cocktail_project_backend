@@ -107,36 +107,9 @@ VALUES ("6","3","4");
 INSERT INTO cocktail_drink (id, cocktailid, drinkid)
 VALUES ("7","3","8");
 
-SELECT DISTINCT cocktail.name 
-FROM cocktail 
-INNER JOIN cocktail_drink ON cocktail_drink.cocktailid = cocktail.id
-INNER JOIN drink ON cocktail_drink.drinkid = drink.id
-WHERE drink.name="gin" 
-OR drink.name="cola";
-
-id                                   | name            |
-+--------------------------------------+-----------------+
-| 7582ca90-1c15-11ea-b16d-06c7454f588e | vodka           |
-| 7587065d-1c15-11ea-b16d-06c7454f588e | gin             |
-| 758ab001-1c15-11ea-b16d-06c7454f588e | cola            |
-| 758f44bc-1c15-11ea-b16d-06c7454f588e | lemonade        |
-| 7595fcf1-1c15-11ea-b16d-06c7454f588e | cointreau       |
-| 759955b4-1c15-11ea-b16d-06c7454f588e | tia maria       |
-| 759d5031-1c15-11ea-b16d-06c7454f588e | baileys         |
-| 75a142e6-1c15-11ea-b16d-06c7454f588e | advocaat        |
-| 75a4efc3-1c15-11ea-b16d-06c7454f588e | orange juice    |
-| 75a8e3ff-1c15-11ea-b16d-06c7454f588e | cranberry juice |
-| 7655f23a-1c15-11ea-b16d-06c7454f588e | tequilla        |
-+--------------------------------------+-----------------+
-
-+--------------------------------------+---------------+
-| id                                   | name          |
-+--------------------------------------+---------------+
-| 5ae1c29a-1c15-11ea-b16d-06c7454f588e | Mojito        |
-| 5ae5b73f-1c15-11ea-b16d-06c7454f588e | Cosmopoiltan  |
-| 5aea4c6f-1c15-11ea-b16d-06c7454f588e | Snow Ball     |
-| 5aeda482-1c15-11ea-b16d-06c7454f588e | Black Russian |
-| 5af28a12-1c15-11ea-b16d-06c7454f588e | B52           |
-+--------------------------------------+---------------+
-
-
+-- SELECT DISTINCT cocktail.name 
+-- FROM cocktail 
+-- INNER JOIN cocktail_drink ON cocktail_drink.cocktailid = cocktail.id
+-- INNER JOIN drink ON cocktail_drink.drinkid = drink.id
+-- WHERE drink.name="gin" 
+-- OR drink.name="cola";
