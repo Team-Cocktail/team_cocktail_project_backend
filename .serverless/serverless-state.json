@@ -159,7 +159,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/cocktail-backend/dev/1576608925453-2019-12-17T18:55:25.453Z/cocktail-backend.zip"
+                "S3Key": "serverless/cocktail-backend/dev/1576670642000-2019-12-18T12:04:02.000Z/cocktail-backend.zip"
               },
               "FunctionName": "cocktail-backend-dev-cocktail",
               "Handler": "handler.cocktail",
@@ -185,14 +185,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CocktailLambdaVersioniy59rhroLvMIlTgcnZ257JDBCO6cwP9OsXUgCjU5Sw": {
+          "CocktailLambdaVersionDpROMLmHqIsKbO2OWZ4kT4uNg94qZkbehzVW9GFs": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CocktailLambdaFunction"
               },
-              "CodeSha256": "XBV2rEHkEUYSU/pUB8VKjkzKI6mbVLKBa9Jp6NpYqCQ="
+              "CodeSha256": "vjVVfi+1u7E4bJdpe22mUJRqWR2LkytHKdC2oG1vq+g="
             }
           },
           "ApiGatewayRestApi": {
@@ -216,6 +216,18 @@
                 ]
               },
               "PathPart": "getallcocktails",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceGetallcocktailsAlcoholicVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceGetallcocktails"
+              },
+              "PathPart": "{alcoholic}",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -377,7 +389,7 @@
               }
             }
           },
-          "ApiGatewayMethodGetallcocktailsOptions": {
+          "ApiGatewayMethodGetallcocktailsAlcoholicVarOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -415,7 +427,7 @@
                 ]
               },
               "ResourceId": {
-                "Ref": "ApiGatewayResourceGetallcocktails"
+                "Ref": "ApiGatewayResourceGetallcocktailsAlcoholicVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -506,6 +518,51 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodGetallcocktailsOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGetallcocktails"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -692,13 +749,13 @@
               }
             }
           },
-          "ApiGatewayMethodGetallcocktailsGet": {
+          "ApiGatewayMethodGetallcocktailsAlcoholicVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceGetallcocktails"
+                "Ref": "ApiGatewayResourceGetallcocktailsAlcoholicVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -785,6 +842,49 @@
               "RequestParameters": {},
               "ResourceId": {
                 "Ref": "ApiGatewayResourceGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CocktailLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodGetallcocktailsGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceGetallcocktails"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -993,7 +1093,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1576608917329": {
+          "ApiGatewayDeployment1576670632029": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1002,14 +1102,15 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodGetallcocktailsOptions",
+              "ApiGatewayMethodGetallcocktailsAlcoholicVarOptions",
               "ApiGatewayMethodGetcocktailbynameNameVarOptions",
               "ApiGatewayMethodGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVarOptions",
+              "ApiGatewayMethodGetallcocktailsOptions",
               "ApiGatewayMethodCocktailOptions",
               "ApiGatewayMethodCocktailCocktailidVarOptions",
               "ApiGatewayMethodFavouriteCocktailidVarUsernameVarOptions",
               "ApiGatewayMethodCocktailCocktailidVarRecipeVarOptions",
-              "ApiGatewayMethodGetallcocktailsGet",
+              "ApiGatewayMethodGetallcocktailsAlcoholicVarGet",
               "ApiGatewayMethodGetcocktailbynameNameVarGet",
               "ApiGatewayMethodGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVarGet",
               "ApiGatewayMethodGetallcocktailsGet",
@@ -1066,7 +1167,7 @@
           "CocktailLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CocktailLambdaVersioniy59rhroLvMIlTgcnZ257JDBCO6cwP9OsXUgCjU5Sw"
+              "Ref": "CocktailLambdaVersionDpROMLmHqIsKbO2OWZ4kT4uNg94qZkbehzVW9GFs"
             }
           },
           "ServiceEndpoint": {
@@ -1175,7 +1276,7 @@
         "events": [
           {
             "http": {
-              "path": "getallcocktails",
+              "path": "getallcocktails/{alcoholic}",
               "method": "get",
               "cors": {
                 "origins": [
@@ -1395,7 +1496,7 @@
     "artifact": "/Users/katiepostle/techreturners/team_cocktail_project_backend/.serverless/cocktail-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/cocktail-backend/dev/1576608925453-2019-12-17T18:55:25.453Z",
+    "artifactDirectoryName": "serverless/cocktail-backend/dev/1576670642000-2019-12-18T12:04:02.000Z",
     "artifact": "cocktail-backend.zip"
   }
 }

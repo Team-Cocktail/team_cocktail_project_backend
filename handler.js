@@ -17,10 +17,13 @@ const connection = mysql.createConnection({
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/getallcocktails", function(req, res) {
+app.get("/getallcocktails/:alcoholic", function(req, res) {
 
-
-  connection.query("SELECT id, name FROM cocktail ",
+  const alcoholic = req.params.alcoholic;
+  
+  connection.query("SELECT id, name FROM cocktail " +
+                    "WHERE alcoholic = ?",
+                    [alcoholic],
                   function(err, data) {
     if (err) {
       console.log("Error fetching all cocktails", err);
