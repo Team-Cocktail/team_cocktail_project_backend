@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/getallcocktails/:alcoholic", function(req, res) {
+app.get("/getnonalcococktails/:alcoholic", function(req, res) {
 
   const alcoholic = req.params.alcoholic;
   
@@ -39,6 +39,23 @@ app.get("/getallcocktails/:alcoholic", function(req, res) {
 
 });
 
+app.get("/getallcocktails", function(req, res) {
+  
+  connection.query("SELECT id, name, alcoholic, recipe, difficulty FROM cocktail ",
+                  function(err, data) {
+    if (err) {
+      console.log("Error fetching all cocktails", err);
+      res.status(500).json({
+        error: err
+      });
+    } else {
+      res.json({
+        cocktails: data
+      });
+    }
+  });
+
+});
 
 app.get("/getcocktailbyname/:name", function(req, res) {
 
@@ -69,7 +86,7 @@ app.get("/getcocktaildrink/:drink1name/:drink2name/:drink3name", function(req, r
     const drink2name = req.params.drink2name;
     const drink3name = req.params.drink3name;
 
-    let querypart1 = "SELECT DISTINCT cocktail.id, cocktail.name FROM cocktail " +
+    let querypart1 = "SELECT DISTINCT cocktail.id, cocktail.name, cocktail.recipe FROM cocktail " +
     "INNER JOIN cocktail_drink ON cocktail_drink.cocktailid = cocktail.id " +
     "INNER JOIN drink ON cocktail_drink.drinkid = drink.id ";
     let querypart2 = "";

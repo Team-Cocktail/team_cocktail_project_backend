@@ -159,7 +159,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/cocktail-backend/dev/1576670642000-2019-12-18T12:04:02.000Z/cocktail-backend.zip"
+                "S3Key": "serverless/cocktail-backend/dev/1577698535372-2019-12-30T09:35:35.372Z/cocktail-backend.zip"
               },
               "FunctionName": "cocktail-backend-dev-cocktail",
               "Handler": "handler.cocktail",
@@ -185,14 +185,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CocktailLambdaVersionDpROMLmHqIsKbO2OWZ4kT4uNg94qZkbehzVW9GFs": {
+          "CocktailLambdaVersionUaAqa60OocSiStOwWtwdMpk4DofPzErLGN1aCP9f6g": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CocktailLambdaFunction"
               },
-              "CodeSha256": "vjVVfi+1u7E4bJdpe22mUJRqWR2LkytHKdC2oG1vq+g="
+              "CodeSha256": "qL/vuUzoQPXDUwtswX+OyVQuuvEr1oUNmiV8MlVQRcU="
             }
           },
           "ApiGatewayRestApi": {
@@ -206,7 +206,7 @@
               }
             }
           },
-          "ApiGatewayResourceGetallcocktails": {
+          "ApiGatewayResourceGetnonalcococktails": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -215,17 +215,17 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "getallcocktails",
+              "PathPart": "getnonalcococktails",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayResourceGetallcocktailsAlcoholicVar": {
+          "ApiGatewayResourceGetnonalcococktailsAlcoholicVar": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
-                "Ref": "ApiGatewayResourceGetallcocktails"
+                "Ref": "ApiGatewayResourceGetnonalcococktails"
               },
               "PathPart": "{alcoholic}",
               "RestApiId": {
@@ -311,6 +311,21 @@
               }
             }
           },
+          "ApiGatewayResourceGetallcocktails": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "getallcocktails",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
           "ApiGatewayResourceCocktail": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
@@ -389,7 +404,7 @@
               }
             }
           },
-          "ApiGatewayMethodGetallcocktailsAlcoholicVarOptions": {
+          "ApiGatewayMethodGetnonalcococktailsAlcoholicVarOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -427,7 +442,7 @@
                 ]
               },
               "ResourceId": {
-                "Ref": "ApiGatewayResourceGetallcocktailsAlcoholicVar"
+                "Ref": "ApiGatewayResourceGetnonalcococktailsAlcoholicVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -749,13 +764,13 @@
               }
             }
           },
-          "ApiGatewayMethodGetallcocktailsAlcoholicVarGet": {
+          "ApiGatewayMethodGetnonalcococktailsAlcoholicVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceGetallcocktailsAlcoholicVar"
+                "Ref": "ApiGatewayResourceGetnonalcococktailsAlcoholicVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -1093,7 +1108,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1576670632029": {
+          "ApiGatewayDeployment1577698527723": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1102,7 +1117,7 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodGetallcocktailsAlcoholicVarOptions",
+              "ApiGatewayMethodGetnonalcococktailsAlcoholicVarOptions",
               "ApiGatewayMethodGetcocktailbynameNameVarOptions",
               "ApiGatewayMethodGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVarOptions",
               "ApiGatewayMethodGetallcocktailsOptions",
@@ -1110,7 +1125,7 @@
               "ApiGatewayMethodCocktailCocktailidVarOptions",
               "ApiGatewayMethodFavouriteCocktailidVarUsernameVarOptions",
               "ApiGatewayMethodCocktailCocktailidVarRecipeVarOptions",
-              "ApiGatewayMethodGetallcocktailsAlcoholicVarGet",
+              "ApiGatewayMethodGetnonalcococktailsAlcoholicVarGet",
               "ApiGatewayMethodGetcocktailbynameNameVarGet",
               "ApiGatewayMethodGetcocktaildrinkDrink1nameVarDrink2nameVarDrink3nameVarGet",
               "ApiGatewayMethodGetallcocktailsGet",
@@ -1167,7 +1182,7 @@
           "CocktailLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CocktailLambdaVersionDpROMLmHqIsKbO2OWZ4kT4uNg94qZkbehzVW9GFs"
+              "Ref": "CocktailLambdaVersionUaAqa60OocSiStOwWtwdMpk4DofPzErLGN1aCP9f6g"
             }
           },
           "ServiceEndpoint": {
@@ -1276,7 +1291,7 @@
         "events": [
           {
             "http": {
-              "path": "getallcocktails/{alcoholic}",
+              "path": "getnonalcococktails/{alcoholic}",
               "method": "get",
               "cors": {
                 "origins": [
@@ -1496,7 +1511,7 @@
     "artifact": "/Users/katiepostle/techreturners/team_cocktail_project_backend/.serverless/cocktail-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/cocktail-backend/dev/1576670642000-2019-12-18T12:04:02.000Z",
+    "artifactDirectoryName": "serverless/cocktail-backend/dev/1577698535372-2019-12-30T09:35:35.372Z",
     "artifact": "cocktail-backend.zip"
   }
 }

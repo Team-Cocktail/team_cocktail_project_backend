@@ -42,7 +42,7 @@ INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
 VALUES ("1", "Mojito",5, "Hi Ball", true, "Mix everything together and add vegetables");
 
 INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
-VALUES ("2", "Cosmopoiltan",4, "Martini", true, "Put everything in a shaker with ice and pour into glass");
+VALUES ("2", "Cosmopolitan",4, "Martini", true, "Put everything in a shaker with ice and pour into glass");
 
 INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
 VALUES ("3", "Snow Ball",6, "Hi Ball", true, "Put lemonade in glass. Stir until most of the bubbles had gone. Pour in advacaat followed by a dash of lime. Mix with a spoon to get a froth on top");
@@ -52,6 +52,13 @@ VALUES ("4", "Black Russian",1,"Hi Ball", true, "Pour vodka and coke into a glas
 
 INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
 VALUES ("5", "B52", 8, "Scooner", true, "Carefully pour the Tia Maria into the glass. Next the Baileys. Finally the Cointreau");
+
+INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
+VALUES ("6", "Sunset", 2, "Hi Ball", false, "Pour the orange into a galss. Next mix the in the cranberry juic and stir");
+
+INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
+VALUES ("7", "Tropical brach", 2, "Hi Ball", false, "Pour the orange juice and pineapple juice into a galss. Next stir and add an umbrella");
+
 
 INSERT INTO drink (id, name)
 VALUES ("1", "vodka");
