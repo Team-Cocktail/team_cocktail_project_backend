@@ -11,6 +11,7 @@ CREATE DATABASE tipple;
                        glass VARCHAR(20),
                        alcoholic BOOLEAN,
                        recipe VARCHAR(500),
+                       thumbnail VARCHAR(100),
                        PRIMARY KEY (id)
  );
 

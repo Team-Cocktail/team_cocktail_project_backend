@@ -41,7 +41,7 @@ app.get("/getnonalcococktails/:alcoholic", function(req, res) {
 
 app.get("/getallcocktails", function(req, res) {
   
-  connection.query("SELECT id, name, alcoholic, recipe, difficulty FROM cocktail ",
+  connection.query("SELECT id, name, alcoholic, recipe, difficulty, thumbnail FROM cocktail ",
                   function(err, data) {
     if (err) {
       console.log("Error fetching all cocktails", err);
