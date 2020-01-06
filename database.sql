@@ -40,7 +40,7 @@ FOREIGN KEY (username) REFERENCES user(username)
 -- INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
 -- VALUES (UUID(), "Mojito",5, "Hi Ball", true, "Mix everything together and add vegetables");
 INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
-VALUES ("1", "Mojito",5, "Hi Ball", true, "Mix everything together and add vegetables");
+VALUES ("1", "Mojito",5, "Hi Ball", true, "Pour one shot of Sambuca and one shot of Kahlua into the Cocktail Glass and give the drinker a straw. Pour 1 shot of Baileys and 1 shot of Blue Curacao into two separate shot glasses either side of the cocktail glass. Set alight the concoction in the cocktail glass and start to drink through the straw (this drink should be drunk in one) , as the bottom of the glass is reached put out the fire by pouring the Baileys and  Blue Curacao into the cocktail glass and keep drinking till it's all gone!!");
 
 INSERT INTO cocktail (id, name, difficulty, glass, alcoholic, recipe)
 VALUES ("2", "Cosmopolitan",4, "Martini", true, "Put everything in a shaker with ice and pour into glass");

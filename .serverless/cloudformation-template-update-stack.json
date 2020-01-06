@@ -145,7 +145,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/cocktail-backend/dev/1578306928381-2020-01-06T10:35:28.381Z/cocktail-backend.zip"
+          "S3Key": "serverless/cocktail-backend/dev/1578342465522-2020-01-06T20:27:45.522Z/cocktail-backend.zip"
         },
         "FunctionName": "cocktail-backend-dev-cocktail",
         "Handler": "handler.cocktail",
@@ -171,14 +171,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CocktailLambdaVersionC2EpKHXpbLocZ2ewrfdNQntcZGXcN39L6zDNT2lYUs8": {
+    "CocktailLambdaVersionD9rEcEuzUvvM79y0VjkL585m2040QVjG5YkM3HLjVI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CocktailLambdaFunction"
         },
-        "CodeSha256": "3ULx+VGwrDrzrNfDR37dJD6NV30Y2GzYy+dARVZSXug="
+        "CodeSha256": "sdcRiQaYaKrgNVIM/gn6274w6oAZHTzFZjBeN1mRnzE="
       }
     },
     "ApiGatewayRestApi": {
@@ -1094,7 +1094,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1578306920605": {
+    "ApiGatewayDeployment1578342456958": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1168,7 +1168,7 @@
     "CocktailLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CocktailLambdaVersionC2EpKHXpbLocZ2ewrfdNQntcZGXcN39L6zDNT2lYUs8"
+        "Ref": "CocktailLambdaVersionD9rEcEuzUvvM79y0VjkL585m2040QVjG5YkM3HLjVI"
       }
     },
     "ServiceEndpoint": {

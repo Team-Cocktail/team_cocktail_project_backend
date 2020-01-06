@@ -22,7 +22,8 @@ app.get("/getnonalcococktails/:alcoholic", function(req, res) {
   const alcoholic = req.params.alcoholic;
   
   connection.query("SELECT id, name FROM cocktail " +
-                    "WHERE alcoholic = ?",
+                    "WHERE alcoholic = ?" +
+                    "ORDER BY name",
                     [alcoholic],
                   function(err, data) {
     if (err) {
@@ -41,7 +42,7 @@ app.get("/getnonalcococktails/:alcoholic", function(req, res) {
 
 app.get("/getallcocktails", function(req, res) {
   
-  connection.query("SELECT id, name, alcoholic, recipe, difficulty, thumbnail FROM cocktail ",
+  connection.query("SELECT id, name, alcoholic, recipe, difficulty, thumbnail FROM cocktail ORDER BY name",
                   function(err, data) {
     if (err) {
       console.log("Error fetching all cocktails", err);
@@ -92,6 +93,7 @@ app.get("/getcocktaildrink/:drink1name/:drink2name/:drink3name", function(req, r
     let querypart2 = "";
     let querypart3 = "";
     let querypart4 = "";
+    let querypart5 = " ORDER BY name";
 
   if (drink1name != "empty") {
     querypart2 = "WHERE LOWER(drink.name)= ?"
@@ -110,7 +112,7 @@ app.get("/getcocktaildrink/:drink1name/:drink2name/:drink3name", function(req, r
   //                  " OR drink.name= ?" +
   //                  " OR drink.name = ?",
 
-  connection.query(querypart1 + querypart2 + querypart3 + querypart4,
+  connection.query(querypart1 + querypart2 + querypart3 + querypart4 + querypart5,
                   [drink1name, drink2name, drink3name], 
                   function(err, data) {
     if (err) {
